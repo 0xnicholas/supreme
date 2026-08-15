@@ -1,0 +1,220 @@
+From 81fba316fc5850d2f7ce4fd26f2852eac36bc6f7 Mon Sep 17 00:00:00 2001
+From: Nicholas <nicholas@local>
+Date: Sat, 15 Aug 2026 14:23:50 +0800
+Subject: [PATCH] Add payoff skill: explain what finishing a batch of tickets
+ gets you
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+User-invoked /payoff reads a batch of tickets (explicit ids, parent issue,
+milestone, wayfinder map, or local feature slug) and the code it touches,
+then delivers the delta between now and the last ticket closing — every
+claim traceable to the ticket that delivers it. Read-only; answers in the
+language the question was asked in.
+
+Registers the skill per AGENTS.md: bucket README, top-level README,
+plugin.json, changeset, docs page, and the ask-matt router.
+---
+ .changeset/payoff-skill.md                   |  5 ++
+ .claude-plugin/plugin.json                   |  1 +
+ README.md                                    |  1 +
+ docs/engineering/payoff.md                   | 56 ++++++++++++++++++++
+ skills/engineering/README.md                 |  1 +
+ skills/engineering/ask-matt/SKILL.md         |  1 +
+ skills/engineering/payoff/SKILL.md           | 47 ++++++++++++++++
+ skills/engineering/payoff/agents/openai.yaml |  5 ++
+ 8 files changed, 117 insertions(+)
+ create mode 100644 .changeset/payoff-skill.md
+ create mode 100644 docs/engineering/payoff.md
+ create mode 100644 skills/engineering/payoff/SKILL.md
+ create mode 100644 skills/engineering/payoff/agents/openai.yaml
+
+diff --git a/.changeset/payoff-skill.md b/.changeset/payoff-skill.md
+new file mode 100644
+index 0000000..58f921a
+--- /dev/null
++++ b/.changeset/payoff-skill.md
+@@ -0,0 +1,5 @@
++---
++"mattpocock-skills": minor
++---
++
++payoff: new user-invoked skill — explain what finishing a batch of tickets gets you. Reads the batch (explicit ids, a parent issue, milestone, wayfinder map, or a local feature slug) and the code it touches, then delivers the delta between the codebase now and when the last ticket closes, every claim traceable to the ticket that delivers it. Read-only; answers in the language the question was asked in.
+diff --git a/.claude-plugin/plugin.json b/.claude-plugin/plugin.json
+index 60fc082..f5a5bd5 100644
+--- a/.claude-plugin/plugin.json
++++ b/.claude-plugin/plugin.json
+@@ -29,6 +29,7 @@
+     "./skills/engineering/to-spec",
+     "./skills/engineering/to-tickets",
+     "./skills/engineering/wayfinder",
++    "./skills/engineering/payoff",
+     "./skills/engineering/implement",
+     "./skills/engineering/prototype",
+     "./skills/engineering/research",
+diff --git a/README.md b/README.md
+index 3b6952d..ff03608 100644
+--- a/README.md
++++ b/README.md
+@@ -200,6 +200,7 @@ Skills I use daily for code work.
+ - **[to-tickets](./skills/engineering/to-tickets/SKILL.md)** — Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges — written as text in a local file, or as native blocking links on a real tracker.
+ - **[implement](./skills/engineering/implement/SKILL.md)** — Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
+ - **[wayfinder](./skills/engineering/wayfinder/SKILL.md)** — Plan a huge chunk of work, more than one agent session can hold, as a shared map of decision tickets on the issue tracker — resolve them one at a time until the way to the destination is clear.
++- **[payoff](./skills/engineering/payoff/SKILL.md)** — Explain, in plain language, what finishing a batch of tickets actually gets you — the delta between the codebase now and when the last ticket closes, every claim traced to the ticket that delivers it.
+ 
+ **Model-invoked**
+ 
+diff --git a/docs/engineering/payoff.md b/docs/engineering/payoff.md
+new file mode 100644
+index 0000000..b316d6f
+--- /dev/null
++++ b/docs/engineering/payoff.md
+@@ -0,0 +1,56 @@
++## What it does
++
++`/payoff` answers one question about a batch of tickets: what does finishing them actually get you? It reads every ticket in the batch in full and the code the batch touches, then explains the **delta** — the difference between the codebase today and the codebase when the last ticket closes — so a human understands it.
++
++Every claim it makes is **traceable**: each benefit names the ticket that delivers it, and a benefit with no ticket behind it is cut as filler. The whole skill is read-only — the answer is the artifact, and nothing is written to the tracker, the code, or the docs.
++
++## When to reach for it
++
++You invoke this by typing `/payoff` — the agent won't reach for it on its own.
++
++Reach for it whenever a batch of tickets exists and someone asks what it buys. That someone may be you before starting ("is this batch worth running?"), mid-flight ("what's left to gain?"), or a stakeholder you need to brief. The batch arrives in whatever form you hold it:
++
++- Ticket ids, numbers, or URLs listed explicitly
++- A parent issue, milestone, or wayfinder map — its still-open children
++- A feature slug on a local tracker (`.scratch/<feature-slug>/issues/`)
++- Nothing but "this batch" — it asks which slice of the tracker you mean
++
++For building the work rather than explaining it, use [`/implement`](https://aihero.dev/skills-implement). For judging incoming issues one at a time, use [`/triage`](https://aihero.dev/skills-triage).
++
++## Prerequisites
++
++The issue tracker must have been configured by [`/setup-matt-pocock-skills`](https://aihero.dev/skills-setup-matt-pocock-skills), so `/payoff` knows where the batch lives — GitHub, GitLab, or local markdown.
++
++## Delta, not description
++
++The cheap answer to "what's the payoff?" is a paraphrase of the ticket titles. The skill refuses that: a delta needs its **before**. For each area the batch touches it reads the current code — through the project's domain glossary and ADRs — until it can state what hurts today, what works today, and what each ticket changes. The payoff is that difference, stated as before → after, so you can check it against the code you already know.
++
++A finished tracer bullet is demoable, so user-facing deltas name the behaviour that works end-to-end; codebase deltas name the pain that disappears. What the batch deliberately leaves alone is stated too — an out-of-scope line is what keeps the verdict honest.
++
++## Traceable or cut
++
++The one rule that shapes every answer: **traceable or cut**. Generic benefits — "improved maintainability", "better developer experience" — with no ticket behind them are filler, and filler is cut. On a wayfinder map the verdict starts from the map's stated **Destination**, then earns it from the tickets. Tickets already landed get credit as landed, so a mid-flight batch reports what's gained and what remains. And the answer comes back in the language the question was asked in.
++
++## Common questions
++
++**Does it count tickets that already landed?**
++
++Yes. Every ticket in the batch is read in full regardless of state; landed ones are marked as landed and credited, so the summary reflects the batch's real current position rather than pretending nothing has happened yet.
++
++**Does it write anything anywhere?**
++
++No. It touches nothing — no tracker comments, no commits, no doc updates. The summary is the artifact; paste it wherever you need it.
++
++## It's working if
++
++- Every benefit names the ticket that delivers it — no orphan adjectives floating free of a ticket.
++- Each "what changes" line states before → after, and the before matches the code you know.
++- Landed tickets are marked as landed; the summary reflects the batch's real current state.
++- The verdict is a few plain sentences you could read aloud to a stakeholder, in the language you asked in.
++- What the batch deliberately doesn't do is stated, not implied.
++
++## Where it fits
++
++A reach-for-it-anytime standalone that hangs off the ticket chain (`/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement` → `/code-review`): any time after [`/to-tickets`](https://aihero.dev/skills-to-tickets) has published a batch — or a [`/wayfinder`](https://aihero.dev/skills-wayfinder) map has children — and someone asks what finishing it buys. `/to-tickets` produced the batch it reads; `/implement` builds the work it explains.
++
++For the full map of how the skills fit together, see [ask-matt](https://aihero.dev/skills-ask-matt).
+diff --git a/skills/engineering/README.md b/skills/engineering/README.md
+index 4a948b8..8d7c674 100644
+--- a/skills/engineering/README.md
++++ b/skills/engineering/README.md
+@@ -15,6 +15,7 @@ Reachable only when you type them (Claude Code: `disable-model-invocation: true`
+ - **[to-tickets](./to-tickets/SKILL.md)** — Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges — text in a local file, or native blocking links on a real tracker.
+ - **[implement](./implement/SKILL.md)** — Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
+ - **[wayfinder](./wayfinder/SKILL.md)** — Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on the issue tracker, resolved one at a time until the way to the destination is clear.
++- **[payoff](./payoff/SKILL.md)** — Explain, in plain language, what finishing a batch of tickets actually gets you — the delta between the codebase now and when the last ticket closes, every claim traced to the ticket that delivers it.
+ 
+ ## Model-invoked
+ 
+diff --git a/skills/engineering/ask-matt/SKILL.md b/skills/engineering/ask-matt/SKILL.md
+index 7f3ab78..decca10 100644
+--- a/skills/engineering/ask-matt/SKILL.md
++++ b/skills/engineering/ask-matt/SKILL.md
+@@ -79,6 +79,7 @@ Off the main flow entirely.
+ - **`/resolving-merge-conflicts`** — work an in-progress merge or rebase conflict hunk by hunk, resolving by **intent** traced to each side's primary source rather than by picking lines, then finish the operation. It never runs `--abort`. Standalone and off every flow: reach for it when you are already mid-conflict.
+ - **`/prototype`** — a small, throwaway program that answers one design question: does this state model feel right, or what should this UI look like. Throwaway is a constraint on how the code is written, not a promise to destroy it: the answer folds into the real code, and the prototype itself is kept as a **primary source** on a `prototype/<name>` branch out of main, pointed at from the implementation issue. It's the detour in step 2 of the main flow, but reach for it any time a design question is hard to settle on paper.
+ - **`/research`** — delegate reading legwork to a **background agent**: it investigates a question against **primary sources**, then leaves a cited Markdown file in the repo. Keep working while it reads. The file it produces is something to take *into* the main flow at `/grill-with-docs` — research feeds the thinking, it doesn't replace it.
++- **`/payoff`** — explain, in plain language, what finishing a batch of tickets gets you: the **delta** between the codebase now and when the last ticket closes, every claim **traceable** to the ticket that delivers it. Works on a `/to-tickets` batch, a milestone, or a `/wayfinder` map's children; read-only, and it answers in the language you asked in. Reach for it any time after tickets exist and someone — you or a stakeholder — asks what the batch buys.
+ - **`/to-questionnaire`** — when the thing blocking you isn't in your head or the codebase but in **someone else's**, this writes them a questionnaire to fill in. It's the inverse of `/grill-me`: instead of interviewing you about the subject, it interviews you about the **send** — who it's going to, what you need back — and aims the questions at the gap. What comes back is material for `/grill-with-docs` or `/to-spec`.
+ - **`/wizard`** — for the steps only a **human** can take: provisioning infrastructure, setting up credentials or CI secrets, clicking through an unfamiliar third-party dashboard, running a one-off migration or cutover. It generates an interactive bash script that opens each URL, captures each value, and writes it into `.env` and GitHub secrets — so the procedure stops being something you re-explain to an agent every time. Model-invoked, so the agent reaches for it the moment it hits a wall only you can pass. If the agent could just do it itself, it should; this is for where a human is genuinely in the loop.
+ - **`/wait-what`** — the corrective for a message that didn't land. Use it mid-conversation, inside any other skill, and the agent re-pitches what it just said with the context you were missing, in plain English, using the `CONTEXT.md` vocabulary. It works after the fact; `/grill-with-docs` is the upfront cure, because a shared language agreed early is what stops the jargon arriving at all.
+diff --git a/skills/engineering/payoff/SKILL.md b/skills/engineering/payoff/SKILL.md
+new file mode 100644
+index 0000000..8cb8a51
+--- /dev/null
++++ b/skills/engineering/payoff/SKILL.md
+@@ -0,0 +1,47 @@
++---
++name: payoff
++description: Explain, in plain language, what finishing a batch of tickets actually gets you — the delta, traced ticket by ticket.
++disable-model-invocation: true
++---
++
++# Payoff
++
++The human has a **batch** of tickets — a feature's slices, a milestone, a wayfinder map's children — and asks one question: what does finishing them get me? The answer is the **payoff**: the **delta** between the codebase today and the codebase when the last ticket closes, told so a human understands it.
++
++Every claim is **traceable** — it names the ticket that delivers it. A benefit with no ticket behind it is filler; cut it.
++
++Read-only: the answer is the artifact. Nothing is written to the tracker, the code, or the docs.
++
++## Process
++
++### 1. Assemble the batch
++
++Resolve what "this batch" is from whatever the user gives you:
++
++- Ticket ids, numbers, or URLs listed explicitly → that set
++- A parent issue, milestone, wayfinder map, or feature slug → its still-open children
++- "This batch" with nothing named → ask which slice of the tracker
++
++The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if not (a local-markdown batch lives under `.scratch/<feature-slug>/issues/`).
++
++Read every ticket's **full body** — the payoff hides below the title. Mark tickets already closed — they get credit as landed.
++
++Done when the batch is accounted for: every ticket that belongs to it, read in full.
++
++### 2. Ground the delta
++
++A delta needs its **before**. For each area the batch touches, read the current code — through the project's domain glossary (`CONTEXT.md`) and the ADRs for that area — until you can state honestly what hurts today, what works today, and what each ticket changes.
++
++Done when every ticket has both sides of its delta named: the before you read in the code, the after its acceptance criteria deliver.
++
++### 3. Deliver the payoff summary
++
++Answer in the language the question was asked in. The summary reads top-down:
++
++1. **Verdict** — two to four sentences in plain words: what the batch, taken together, gets the human. A batch hanging off a wayfinder map already has its verdict written — the map's **Destination**; read it, then earn it from the tickets.
++2. **What changes** — grouped by who feels it. **Users**: behaviour that works end-to-end — a finished tracer bullet is demoable. **Codebase**: pain that disappears, feedback loops gained. Each line states the delta — before → after.
++3. **Ticket by ticket** — one line per ticket: what closing it delivers, by name. Landed tickets marked as such.
++4. **Unblocked** — the work that becomes possible only after this batch, traced to the blocking edges it clears.
++5. **Out of scope** — what the batch deliberately leaves alone; naming it keeps the verdict honest.
++
++Done when every ticket in the batch appears exactly once, and every claim in the answer is traceable to a ticket by name.
+diff --git a/skills/engineering/payoff/agents/openai.yaml b/skills/engineering/payoff/agents/openai.yaml
+new file mode 100644
+index 0000000..8362c28
+--- /dev/null
++++ b/skills/engineering/payoff/agents/openai.yaml
+@@ -0,0 +1,5 @@
++interface:
++  display_name: "Payoff"
++  short_description: "What finishing a batch of tickets gets you"
++policy:
++  allow_implicit_invocation: false
+-- 
+2.39.2 (Apple Git-143)
+

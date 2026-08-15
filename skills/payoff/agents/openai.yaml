@@ -1,0 +1,5 @@
+interface:
+  display_name: "Payoff"
+  short_description: "What finishing a batch of tickets gets you"
+policy:
+  allow_implicit_invocation: false
