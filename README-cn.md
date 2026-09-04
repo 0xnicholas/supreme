@@ -73,12 +73,6 @@ laws of branding
 
 ## 工程
 
-[extract-design](skills/frontend/extract-design/SKILL.md)
-给定网站 URL，提取设计体系（设计令牌、组件清单、页面结构、响应式行为）为 DESIGN.md 规范
-
-[replica-prompt](skills/frontend/replica-prompt/SKILL.md)
-根据 DESIGN.md 生成复刻提示词（REPLICA-PROMPT.md，默认引用模式），指导 coding agent 复刻网站
-
 > 用 matt 的（因为想不出比他更好的了）
 
 [payoff](skills/payoff/SKILL.md)

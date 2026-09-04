@@ -1,24 +1,30 @@
 # Skills for Builders
 
-A collection of agent skills for builders, entrepreneurs, and product creators.
+Agent skills for builders, entrepreneurs, and product creators — 帮创业者与 Builder 理清思路、验证想法、制定战略、准备融资的技能集。
 
-## Reference
+不知道当前该用哪个技能？从 **[the-grand-tour](#reference--导航)** 开始，它是整片地形的全景地图。
 
-## Engineering
+## Reference · 导航
 
-- **[payoff](skills/payoff/SKILL.md)** — 解释做完一批 tickets 能得到什么：逐张读 ticket 与相关代码，交付「现在 vs 最后一张关单时」的 delta，每条好处都可溯源到对应 ticket。[mattpocock/skills](https://github.com/mattpocock/skills) 工作流的扩展。
+- **[the-grand-tour](skills/the-grand-tour/SKILL.md)** — 商业设计全案：创业旅程的全景地图 + 框架集 + 思维方式 + 导航系统。它不回答"你现在该做什么"，而是告诉你"你现在在哪儿、有哪些工具可用、前方有什么等着你"。任何阶段都可回来查阅。
 
-## Business
+## Business · 商业
 
-- **[start-with-why](skills/start-with-why/SKILL.md)** — Clarify your venture's purpose using Simon Sinek's Golden Circle. Find your Why, then communicate inside-out.
-- **[pmf-driven](skills/pmf-driven/SKILL.md)** — Systematically find product-market fit. Measure PMF signals, run the PMF Engine cycle, decide pivot or persevere.
+### 认知与定位（知道做什么）
 
-## Frontend
+- **[start-with-why](skills/start-with-why/SKILL.md)** — Clarify your venture's core purpose with Simon Sinek's Golden Circle (Why → How → What), then communicate inside-out. 用黄金圈找到你的 Why，让客户、团队、投资人被信念而非产品打动。
+- **[pmf-driven](skills/pmf-driven/SKILL.md)** — Find product-market fit like an engineer: validate demand, measure PMF signals (Sean Ellis test…), run the PMF Engine cycle, and decide pivot or persevere. 以 PMF 为目标驱动商业思考。
+- **[challenge-me](skills/challenge-me/SKILL.md)** — Battle-test a business plan, product idea, or strategic decision before committing resources. 对计划进行系统性压力测试：挖出隐藏假设、盲点与一厢情愿的想法，让市场之前先被自己攻击。
+- **[show-me-the-money](skills/show-me-the-money/SKILL.md)** — Practice VC fundraising through simulated meetings (pitch → questions → objections → follow-up → term sheet). 模拟真实融资场景，让你第一次见 VC 之前已经练习过很多次。
 
-- **[extract-design](skills/frontend/extract-design/SKILL.md)** — 给定网站 URL，提取设计体系（设计令牌、组件清单、页面结构、响应式行为）为 DESIGN.md 规范。
-- **[replica-prompt](skills/frontend/replica-prompt/SKILL.md)** — 根据 DESIGN.md 生成复刻提示词（REPLICA-PROMPT.md，默认引用模式），指导 coding agent 复刻网站。
+### 战略与模式（知道在哪竞争）
 
-## Examples
+- **[dark-forest](skills/dark-forest/SKILL.md)** — Competitive strategy from the Dark Forest theory (Liu Cixin's *Three Body Problem*): map visible, invisible, adjacent and future competitors; decide where to position. 最危险的竞争对手是你看不见的那个——它告诉你"谁能杀死我们、怎么杀死我们"。
 
-- **[Vercel.com 首页](examples/vercel/)** — extract-design + replica-prompt 的完整试跑产出：`DESIGN.md`（设计规范）+ `REPLICA-PROMPT.md`（复刻提示词，引用模式）
+## Engineering · 工程
 
+- **[payoff](skills/payoff/SKILL.md)** — Explain what finishing a batch of tickets actually gets you: read each ticket and its related code, then deliver the "today vs. when the last ticket closes" delta — every benefit traceable to the ticket that delivers it. 是 [mattpocock/skills](https://github.com/mattpocock/skills) 工作流的扩展。
+
+---
+
+每个技能都是 [`skills/`](skills/) 下的一个目录，内含 `SKILL.md`（有的还带 `agents/`）。尚未实现的规划中技能见 [README-cn.md](README-cn.md)。
