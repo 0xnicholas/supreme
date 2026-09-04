@@ -1,6 +1,6 @@
 ---
 name: start-with-why
-description: Use when a builder or entrepreneur needs to clarify their venture's core purpose, define their Golden Circle (Why-How-What), or communicate their vision to inspire customers, team members, and investors. Also use when facing decisions that need alignment with the venture's mission.
+description: Use when a builder or entrepreneur needs to clarify their venture's core purpose, define their Golden Circle (Why-How-What), or communicate their vision to inspire customers, team members, and investors. Also use when facing decisions that need alignment with the venture's mission, or when a venture is still a vague idea that needs a first direction — start here.
 ---
 
 # Start with Why
@@ -25,6 +25,11 @@ The Golden Circle shows that inspiring leaders communicate inside-out: **Why** (
 
 **Most communicate outside-in:** "We make great computers. Want one?"
 **Inspiring leaders communicate inside-out:** "We believe in challenging the status quo. We do that with beautiful design. We happen to make great computers."
+
+### When not to use
+
+- You can already say your Why in one sentence and it already guides your decisions → you don't need this exercise; go to **pmf-driven** (is there a market?) or **challenge-me** (stress-test the plan).
+- The live question is about demand, positioning, or competition — not your motivation.
 
 ---
 
@@ -53,13 +58,19 @@ The first 15-18% buy **Why**, not **What**. Start with believers, not the mass m
 
 ---
 
-## Find Your Why
+## Run the Exercise
 
-1. Collect **5-10 stories** of when you felt most fulfilled
-2. Identify **recurring themes** (helping others? fighting unfairness? building?)
-3. Distill into a single sentence: *"To [verb] [someone] to [contribute/value]"*
+A live session with the founder — HITL: the founder answers for themselves; you never fill in their side. Deliverable: a one-line Why + How/What alignment, validated against real decisions.
 
-> A venture cannot have a stronger Why than its founder.
+1. **Collect stories** — Ask for **5–10 moments** when the founder felt most fulfilled (at work or in life). Ask one at a time; probe each: *Who did it help? What was unfair or broken? What were they building? How did it feel?* Record each in the founder's own words, not your summary.
+2. **Extract themes** — When the stories are in, name the recurring themes you see (helping others / fighting unfairness / building from nothing / teaching…). Present them as *proposals*: the founder confirms or corrects. A theme the founder doesn't recognize is not a theme.
+3. **Draft the Why** — Shape one sentence per template: *"To [verb] [someone] to [contribute/value]"*. Offer 2–3 variants with different verbs and audiences; the founder picks and edits. Their sentence, not yours.
+4. **Validate with the Celery Test** — Take **3 live decisions** (a feature, an ask, an opportunity currently on the table). Does each one survive the Why? A Why that says yes to everything is not sharp enough — return to step 2.
+5. **Deliver** — The artifact: the Why sentence, the How/What alignment (belief → actions → products), and the 3 Celery Test verdicts. If the venture keeps docs, offer to write it there.
+
+> **Why and the founder.** An early venture's Why rarely outruns its founder's: it starts with them, and as the team grows it is *inherited* — through hiring for belief, storytelling, and decisions — rather than rewritten. A later-stage "why" the founder doesn't actually hold is decoration; see Common Mistakes.
+
+When invoked for a single decision rather than the full exercise, run only step 4 against the Why you already have.
 
 ---
 
@@ -76,7 +87,7 @@ The first 15-18% buy **Why**, not **What**. Start with believers, not the mass m
 ## Common Mistakes
 
 - ❌ "Why is just a mission statement" — Why must drive decisions, not decorate a wall
-- ❌ "Why changes as we grow" — The Why doesn't change; How and What evolve
+- ❌ "Why changes as we grow" — A stable Why is the point; if you keep rewriting it, you're probably confusing Why with How and What
 - ❌ "We'll figure out Why later" — Without Why, you attract price-sensitive customers, not believers
 
 ---
