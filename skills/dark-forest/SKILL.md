@@ -210,14 +210,19 @@ A systematic rhythm for staying alive in the forest:
 | **Quarterly (deep)** | Full competitive landscape audit. Update Porter's Five Forces. Reassess moat strength. Check for AI-native threats (one-person companies in your space). |
 | **Annually (strategic)** | Blue Ocean strategy canvas refresh. Are you still in uncontested space? Is the forest shifting? |
 
-### The Quarterly Deep Scan
+### Run the Scan — the deep scan as a live session
 
-1. **Map the visible** — Update your competitor landscape (what changed?)
-2. **Scan the invisible** — What signals of stealth entrants have appeared?
-3. **Audit adjacencies** — Did any platform/adjacent player move into your space?
-4. **Simulate the predator** — "If I had $10M and 6 months to kill this company, how would I do it?"
-5. **Stress-test the moat** — Is your defense stronger or weaker than last quarter?
-6. **AI-native check** — Could a solopreneur with AI replicate your core value prop?
+HITL where it matters: the founder's market knowledge and judgment stay theirs. The agent researches public signals (funding, job postings, open source, Product Hunt / HN launches); the founder supplies what no search can see — customer chatter, lost-deal whispers, platform roadmap rumors.
+
+1. **Map the visible** — Update the Layer-1 landscape: who they track today and why. Agent adds public data (funding, launches, hiring); rate each threat low / medium / high.
+2. **Scan the invisible** — What stealth teams, bigco internal builds, open-source projects, or agencies-about-to-productize could be working this problem? Agent checks adjacent funding patterns, job postings, patents, OSS activity.
+3. **Audit adjacencies** — Did any platform or neighbor move into your space — or could they? Play their best move: "they bundle our feature next quarter — now what?"
+4. **Simulate the predator** — The one question the agent can't answer: *"If you had $10M and 6 months to kill this company, how would you do it?"* Name the kill path before looking at any defenses.
+5. **Stress-test the moat** — Run the moat diagnostic against the kill paths from step 4 and the top threats from steps 1–3. Where the kill path beats the moat, that's a moat gap.
+6. **AI-native check** — Could one person with AI replicate your core value prop in weeks? If yes, distribution and trust are the moat to build now.
+7. **Deliver the map** — Artifact: the four-layer map — one row per threat: layer / who / threat level / the signal that revealed them / your response. Plus the top-3 threats, each with the cheapest counter-test, and the moat gaps to close before next quarter.
+
+A "who are our competitors?" question is rephrased, not answered: the spreadsheet answer is Layer 1 only. The useful question is *"who could kill us, and how?"* — that's what this scan produces.
 
 ---
 
@@ -232,6 +237,7 @@ A systematic rhythm for staying alive in the forest:
 | No visible competition | **Red flag.** Are you in a dark forest, or a dead forest? |
 | AI can replicate your core | Distribution + trust = new moat |
 | Founder asks "who's our competitor?" | Shift question to "who could kill us?" |
+| Whole-plan pressure test | **challenge-me** — its lens 3 is the fast entry version of this scan |
 
 ---
 
