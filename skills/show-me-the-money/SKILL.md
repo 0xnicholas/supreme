@@ -29,6 +29,21 @@ Fundraising is a performance. Founders who walk in cold — even with a great bu
 
 ---
 
+## Before You Raise
+
+Fundraising is a means, not a milestone. If you're not ready, every meeting you take trains you to pitch a story the market hasn't validated — and burns your warm intros. Run this gate before any simulation:
+
+| Gate | Pass if |
+|------|---------|
+| **PMF signal** | ≥40% "very disappointed" (Sean Ellis) + retention flattening — or a defensible plan to get there with this round's money |
+| **Runway** | 12-18 months post-close, or a clear path to it |
+| **Why now** | A specific reason this round must happen now (market window, team, traction cliff) |
+| **Warm intros** | 5+ people who can introduce you to target investors |
+
+Failing the PMF gate? That's **pmf-driven**'s job, not a pitch rehearsal. Failing the rest → fix the thing and keep practicing — don't take meetings yet.
+
+---
+
 ## The Fundraising Process
 
 Fundraising is not pitching — it's a process with predictable stages:
@@ -154,6 +169,24 @@ Most VCs have already decided in **5 minutes** whether they're interested. Struc
 - **Traction:** One signal that proves it's real
 - **Why me:** One sentence on your edge
 
+### Numbers You Must Know Cold
+
+A VC meeting is a quiz disguised as a conversation. Fumbling a number you *have* is as bad as not having it. Drill these until they come out without thinking — know both the number and the one-line story behind it:
+
+| Number | Why it gets asked |
+|---|---|
+| **Growth rate** (MoM/WoW, last 2-3 periods) | "Is this working?" — the first question of every meeting |
+| **Retention** (cohort curve + where it flattens) | "Is it real or paid?" — fake growth dies here |
+| **CAC / payback** | "Does the unit math close?" |
+| **LTV / gross margin** | Same question, another angle |
+| **Burn / runway** | "How much time do we have to be right?" |
+| **ARR / revenue** | The anchor every other ratio hangs off |
+| **Market math** (TAM → SAM → SOM, your 2-3 assumptions) | "Can this be a $1B company?" |
+| **Ask & use of funds** | "What do you need, and why exactly this much?" |
+| **Cap table basics** (ownership, option pool) | "Will the deal be clean?" |
+
+If a number doesn't exist yet, that's fine — have the honest answer and the plan to produce it, not a guess.
+
 ---
 
 ## The Simulation Protocol
@@ -182,11 +215,28 @@ The simulation pushes back with realistic questions and objections based on:
 
 ### 4. Debrief
 
-After the simulation, you get:
+After the simulation, score it 1-5 on each axis and track the scores across sessions — improvement is visible only if you measure it:
+
+- **Story clarity** — did the through-line survive contact?
+- **Data readiness** — numbers at the fingertips?
+- **Objection handling** — recovered or stumbled?
+- **Ask & terms** — clear ask, right round, sane valuation story?
+- **Presence** — conversational, not scripted?
+
+Then write the debrief deliverables:
+
 - **What went well** — strengths to keep
-- **Weak spots** — gaps in your story or data
-- **Specific objections** — that you need to address before the real meeting
-- **Action items** — concrete prep for your actual meeting
+- **Weak spots** — gaps in your story or data (tie each to the scorecard axis it cost you)
+- **Objection Answer Sheet** — every objection that stumbled you becomes a row: objection → your 1-minute answer → the evidence backing it. This sheet is the point: it accumulates across simulations into your ammunition library. Re-run the same persona and watch it grow.
+- **Action items** — concrete prep before the real meeting
+
+### Role-play rules (for the simulator)
+
+- Stay in persona: the chosen firm's style, priorities, and tone — impatience included. Never soften into a friendly coach unless intensity is set to Friendly.
+- Chain follow-ups off the founder's actual answers. A dodge is a follow-up target, not a cue to move on.
+- Escalate: every 2-3 exchanges, push one level harder (numbers, team conflict, valuation).
+- Never invent the founder's facts. When they don't know a number, that's a marked gap — it lands on the scorecard and in action items, not in a made-up answer.
+- End like a real meeting ("we'll be in touch" / a pass). No meta-discussion until Debrief.
 
 ---
 
