@@ -10,7 +10,9 @@ The human has a **batch** of tickets — a feature's slices, a milestone, a wayf
 
 Every claim is **traceable** — it names the ticket that delivers it. A benefit with no ticket behind it is filler; cut it.
 
-Read-only: the answer is the artifact. Nothing is written to the tracker, the code, or the docs.
+Read-only and solo (AFK): the answer is the artifact — nothing is written to the tracker, the code, or the docs, and no human input is needed beyond the question asked.
+
+**Where this runs:** in the repo the batch belongs to — where its tickets live (that repo's tracker doc) and where its code changes. Ground the delta in that repo's `CONTEXT.md` and ADRs where they exist. The skill ships from a collection repo; it is *used* in the batch's own repo.
 
 ## Process
 
@@ -38,7 +40,7 @@ Done when every ticket has both sides of its delta named: the before you read in
 
 Answer in the language the question was asked in. The summary reads top-down:
 
-1. **Verdict** — two to four sentences in plain words: what the batch, taken together, gets the human. A batch hanging off a wayfinder map already has its verdict written — the map's **Destination**; read it, then earn it from the tickets.
+1. **Verdict** — two to four sentences in plain words: what the batch, taken together, gets the human. A batch hanging off a wayfinder map already has its verdict written — the map's **Destination**; read it, then earn it from the tickets. If closing the batch makes anything harder — lost optionality, new maintenance burden, a door closed — the verdict says so; payoff reports both directions.
 2. **What changes** — grouped by who feels it. **Users**: behaviour that works end-to-end — a finished tracer bullet is demoable. **Codebase**: pain that disappears, feedback loops gained. Each line states the delta — before → after.
 3. **Ticket by ticket** — one line per ticket: what closing it delivers, by name. Landed tickets marked as such.
 4. **Unblocked** — the work that becomes possible only after this batch, traced to the blocking edges it clears.
