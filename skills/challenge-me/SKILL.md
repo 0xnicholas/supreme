@@ -102,6 +102,8 @@ Most competitive analysis is naive. It assumes competitors stand still. They don
 
 > **Rule of thumb:** If you can't name 3 ways a competitor could kill you within 12 months, you haven't thought hard enough.
 
+> Need the full competitive sweep — visible, invisible, adjacent, future competitors? That's **dark-forest**'s territory; this lens is the entry check.
+
 ### 4. Economic Scrutiny — "Does the Unit Math Work?"
 
 | Metric | Challenge Question | Red Flag |
@@ -159,8 +161,13 @@ For serious plans before committing resources:
 4. **Economic Model** (10 min) — Worst-case unit math
 5. **Customer Audit** (10 min) — Real signals vs. wishful thinking
 6. **Execution Check** (10 min) — Team gaps + decision protocols
+7. **Refine** (10 min) — Challenge → refine, not abandon. Take the top 3 weakest points and turn each into: the cheapest test that would confirm it, and what changes in the plan if confirmed. This is your next action.
 
-**Output:** A challenge report with 3-5 specific weakest points, prioritized by "will kill us if wrong" × "how uncertain we are".
+**Output:** A challenge report — 3-5 specific weakest points, prioritized by "will kill us if wrong" × "how uncertain we are" — each with a cheapest test and the plan change it triggers:
+
+> | # | Weakest point (lens) | Why it kills us | Cheapest test | If true, plan changes to |
+> |---|---|---|---|---|
+> | 1 | … | … | … | … |
 
 ---
 
@@ -189,4 +196,4 @@ For serious plans before committing resources:
 
 ---
 
-**Sources:** Pre-Mortem (Klein, 2007) · The Mom Test (Fitzpatrick, 2013) · Sean Ellis PMF Survey · Blue Ocean Strategy (Kim & Mauborgne) · Unit Economics: SaaS Metrics (Skok, For Entrepreneurs)
+**Sources:** Pre-Mortem (Klein, 2007) · The Mom Test (Fitzpatrick, 2013) · Sean Ellis PMF Survey · Unit Economics: SaaS Metrics (Skok, For Entrepreneurs)
