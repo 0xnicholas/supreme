@@ -27,4 +27,4 @@ Agent skills for builders, entrepreneurs, and product creators — 帮创业者�
 
 ---
 
-每个技能是 [`skills/`](skills/) 下的一个目录（`SKILL.md`，有的带 `agents/`）。🚧 规划中技能（Know-How、财务预测、增长黑客等）见 [README-cn.md](README-cn.md)。技能集的复盘历史记录在 [GitHub 复盘地图](https://github.com/0xnicholas/supreme/issues/1)。
+每个技能是 [`skills/`](skills/) 下的一个目录（`SKILL.md`，有的带 `agents/`）。🚧 规划中技能（Know-How、财务预测、增长黑客等）标注在 **the-grand-tour** 的全景地图上。技能集的复盘历史记录在 [GitHub 复盘地图](https://github.com/0xnicholas/supreme/issues/1)。
