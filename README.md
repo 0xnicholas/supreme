@@ -24,7 +24,7 @@ Agent skills for builders, entrepreneurs, and product creators — 帮创业者�
 ## Engineering · 工程
 
 - **[payoff](skills/payoff/SKILL.md)** — 解释做完一批 tickets 能得到什么：逐张读 ticket 与相关代码，交付「现在 vs 最后一张关单时」的 delta，每条好处可溯源到对应 ticket。AFK 只读、报喜也报忧。[mattpocock/skills](https://github.com/mattpocock/skills) 工作流扩展。
-- **[qa](skills/qa/SKILL.md)** — 发布前质检。对着 issue 的验收标准真跑一遍（happy path / 边界 / 失败 / 状态 / 上下层），用 mutation probe 验证测试是否真的会红，再把发现整理成 `.scratch/qa/<issue>.md` 的 fix list：blocker → major → minor，每条带证据、验收检查、测试 seam 与阻塞边，可直接交给新 agent 执行。`/implement` 与 `/code-review` 之后的 phase。[mattpocock/skills](https://github.com/mattpocock/skills) 工作流扩展。
+- **[qa](skills/qa/SKILL.md)** — 发布前质检，只读不改代码。对着 issue 的验收标准真跑一遍（happy path / 边界 / 失败 / 状态 / 上下层），把 mutation 验证（改坏哪里、哪条测试应转红）写进清单交给 fixer 证明，最后整理成 `.scratch/qa/<number>-<slug>.md` 的 fix list：blocker → major → minor，每条带证据、验收检查、测试 seam 与阻塞边，可直接交给新 agent 执行。`/implement` 与 `/code-review` 之后的 phase。[mattpocock/skills](https://github.com/mattpocock/skills) 工作流扩展。
 
 ---
 

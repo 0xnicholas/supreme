@@ -1,6 +1,6 @@
 # Quality axes
 
-The reference for step 5. Walk every axis over the changed surface and its blast radius. Each ends `clean` or with findings.
+The reference for step 5. Walk every axis over the changed surface and its blast radius. Reuse step 3's evidence rather than repeating it: an axis that lands on a finding the pushes already produced cites it. Each axis ends `clean` or with findings.
 
 **The evidence bar** applies to all of them: a finding states the consequence — who is hurt, when, and how badly. No consequence, no finding.
 
@@ -58,11 +58,13 @@ Probe: trigger success and failure at the log level the deployment actually uses
 
 Findings: silent success path, failure with no log, a log without the id needed to investigate, README or API docs contradicting the new behaviour, a changed interface with no migration note.
 
-## 8. Scope and cleanliness
+## 8. Scope and residue
 
-Probe: read the diff for behaviour nobody asked for, and for the residue of the work.
+Probe: run the changed surface with the settings it ships with; look for behaviour nobody asked for that is reachable, and for the residue of the work that survives into runtime.
 
-Findings: speculative generality, a feature flag nobody flips, dead branch, commented-out code, debug output at info level, a TODO that encodes unfinished work, a dependency added for one call.
+Findings: a feature flag nobody flips, debug output at info level, a TODO that encodes unfinished work in a shipped path.
+
+Static shape — speculative abstraction, dead branches, commented-out code — belongs to `code-review`'s Standards axis. Don't re-file it here.
 
 ## 9. Compatibility
 
@@ -72,4 +74,4 @@ Findings: a breaking change to a public API, type, CLI flag, or config key witho
 
 ## Never a finding
 
-Formatting, naming taste, abstraction preference, "I'd have done it differently", anything the repo's documented standards endorse, anything tooling already enforces. Those belong to `code-review`'s Standards axis, and repeating them here dilutes the fix list.
+Formatting, naming taste, abstraction preference, static shape, "I'd have done it differently", anything the repo's documented standards endorse, anything tooling already enforces. Those belong to `code-review`'s Standards axis, and repeating them here dilutes the fix list.

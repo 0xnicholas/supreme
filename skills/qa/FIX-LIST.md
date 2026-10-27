@@ -5,11 +5,11 @@ The fix list is the artifact that outlives the session. Write it for a fresh age
 ## Rules for every item
 
 - **Behaviour, not location.** The title names what changes, so it survives a rename.
-- **Evidence is a snapshot.** A command and its output, or a quote plus the trigger that reaches it. Paths and line numbers are welcome here, because evidence records a moment. Long logs, screenshots, and payloads live under `.scratch/qa/<issue-slug>/` and are linked from the item.
+- **Evidence is a snapshot.** A command and its output, or a quote plus the trigger that reaches it. Paths and line numbers are welcome here, because evidence records a moment. A command runs from the repo root against the linked fixtures, with no hidden state. Long logs, screenshots, and payloads live under `.scratch/qa/<number>-<slug>/` and are linked from the item.
 - **Current → desired.** Both stated, including the edge and error cases the fix must cover.
 - **Touch is durable.** Name the interface, type, function, or config shape. No file paths, no line numbers — the agent explores fresh.
 - **Acceptance is observable.** A check that passes or fails on its own, independent of how the fix is written.
-- **Test names the seam.** Say where the test goes and what it asserts red-first.
+- **Test names the seam.** Say where the test goes and what it asserts red-first. For a binding gap, name the mutation that must turn the existing test red.
 - **One cause, one item.** Symptoms of the same root cause merge.
 
 ## Severity
@@ -55,16 +55,17 @@ Good:
 
 ## The file
 
-Write `.scratch/qa/<issue-slug>.md`:
+Write `.scratch/qa/<number>-<slug>.md`:
 
 ````markdown
 # QA — <issue title>
 
-**Issue:** <link> · **Range:** `<base>..<head>` · **Date:** <YYYY-MM-DD>
+**Issue:** <link | no issue — spec/branch + confirmed ACs> · **Range:** `<base>..<head | base..worktree>` · **Date:** <YYYY-MM-DD>
+**Session:** <fresh | same-context as author — findings may share author bias>
 **Verdict:** <ship | ship with follow-ups | don't ship> — <one line>
 **Counts:** <n> blocker · <n> major · <n> minor
 
-> **To the agent implementing this list:** work top to bottom, blockers first. For each item, write the failing test, make it pass, run the item's acceptance check, and keep the rest of the suite green. Work only the listed items; append discovered work here instead of fixing it in passing. When the list is complete, re-run the acceptance scorecard and report every row.
+> **To the agent implementing this list:** work top to bottom — the order is topological, so a major may sit above a blocker that depends on it. For each item, write the failing test, make it pass, run the item's acceptance check, and keep the rest of the suite green. Work only the listed items; append discovered work here instead of fixing it in passing. When the list is complete, re-run the acceptance scorecard, report every row, and append the `## Re-run` block described below.
 
 ## Why this verdict
 
@@ -76,7 +77,7 @@ Write `.scratch/qa/<issue-slug>.md`:
 | --- | --- | --- | --- |
 | AC1 | <observable statement> | proven | `<command>` → `<observed>` |
 | AC2 | <observable statement> | broken — QA-1 | `<command>` → `<observed>` |
-| AC3 | <observable statement> | unproven — no seam; probe is QA-4 | `<why>` |
+| AC3 | <observable statement> | unproven — no reachable seam; QA-4 builds the probe | `<why>` |
 
 ## Fix list
 
@@ -98,3 +99,15 @@ Write `.scratch/qa/<issue-slug>.md`:
 
 - <pre-existing issues, adjacent work, suspicions not reproduced>
 ````
+
+## Re-runs
+
+After a fix pass, append — never rewrite the first pass:
+
+```markdown
+## Re-run — <YYYY-MM-DD>
+
+**Head:** `<head>` · **Verdict:** <updated> · **Flipped:** <AC2 → proven via QA-1>
+
+<What changed since the first pass, and what did not.>
+```
