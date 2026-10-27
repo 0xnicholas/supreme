@@ -1,0 +1,5 @@
+interface:
+  display_name: "QA"
+  short_description: "Prove a shipped issue works; hand off a fix list"
+policy:
+  allow_implicit_invocation: false
